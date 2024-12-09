@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Expenses Tracker</title>
+    <link rel="stylesheet" href="styles4.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img id="logoImage" src="image/logo.webp" alt="Expenses Tracker Logo">
+        </div>
+        
+    </header>
+
+    <main class="main-content">
+        <div class="form-container">
+            <h1>Create an Account</h1>
+            <form id="signup-form">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password:</label>
+                    <input type="password" id="confirm-password" name="confirm-password" required>
+                </div>
+                <button type="submit">Sign Up</button>
+            </form>
+            <p>Already have an account? <a href="login.html">Login</a></p>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 Expenses Tracker</p>
+    </footer>
+
+    <script>
+        document.getElementById('signup-form').addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent form submission
+
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match.');
+                return;
+            }
+
+            // Get existing users from localStorage
+            let users = JSON.parse(localStorage.getItem('users')) || []; // Use empty array if no users exist
+
+            // Check if the username already exists
+            if (users.some(user => user.username === username)) {
+                alert('Username is already taken.');
+                return;
+            }
+
+            // Save new user data to the users array
+            const user = { username, email, password };
+            users.push(user);
+
+            // Save updated users array to localStorage
+            localStorage.setItem('users', JSON.stringify(users));
+
+            // Log the users to the console
+            console.log('Users stored in localStorage:', JSON.parse(localStorage.getItem('users')));
+
+            alert('Sign Up successful!');
+            window.location.href = 'login.html'; // Redirect to login page
+        });
+    </script>
+</body>
+</html>

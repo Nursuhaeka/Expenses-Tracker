@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Expense - Expenses Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                
+                <li><a href="settings.html">Settings</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <!-- Sidebar Button (always visible) -->
+    <button class="sidebar-toggle-btn" id="sidebar-toggle-btn">&#9776;</button>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <img src="image/logo.webp" alt="Logo">
+        </div>
+        <div class="nav-links">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="add-expense.html">Add Expenses</a></li>
+                <li><a href="budgeting.html">Add Budgeting</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="add-expense">
+            <h1>Add New Expense</h1>
+            <form id="expenseForm">
+                <label for="category">Category:</label>
+                <select id="category" name="category">
+                    <option value="food">Food</option>
+                    <option value="transport">Transport</option>
+                    <option value="entertainment">Entertainment</option>
+                    <option value="utilities">Utilities</option>
+                    <option value="others">Others</option>
+                </select>
+                
+                <label for="amount">Amount:</label>
+                <input type="number" id="amount" name="amount" required>
+
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" rows="4" required></textarea>
+
+                <button type="submit">Add Expense</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Expenses Tracker</p>
+    </footer>
+
+    <!-- JavaScript for sidebar toggle and form submission -->
+    <script>
+        const sidebarToggle = document.getElementById("sidebar-toggle-btn");
+        const sidebar = document.getElementById("sidebar");
+        const mainContent = document.querySelector(".main-content");
+
+        // Sidebar toggle
+        sidebarToggle.addEventListener("click", function() {
+            sidebar.classList.toggle("open");
+            mainContent.classList.toggle("sidebar-open");
+        });
+
+        // Handle form submission
+        document.getElementById("expenseForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            
+            const category = document.getElementById("category").value;
+            const amount = parseFloat(document.getElementById("amount").value);
+            const description = document.getElementById("description").value;
+
+            // Get existing expense data from sessionStorage or create a new object
+            const expenseData = JSON.parse(sessionStorage.getItem("expenseData")) || {};
+
+            // Update the expense data with the new expense
+            if (expenseData[category]) {
+                expenseData[category] += amount;
+            } else {
+                expenseData[category] = amount;
+            }
+
+            // Save updated expense data to sessionStorage
+            sessionStorage.setItem("expenseData", JSON.stringify(expenseData));
+
+            // Redirect to dashboard
+            window.location.href = "dashboard.html";
+        });
+    </script>
+</body>
+</html>

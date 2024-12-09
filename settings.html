@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings Page</title>
+    <link rel="stylesheet" href="styles6.css"> <!-- Link to your existing CSS -->
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+           
+         
+            <li><a href="settings.html">Settings</a></li>
+        </ul>
+    </div>
+
+    <!-- Sidebar Toggle Button (optional) -->
+    <button class="sidebar-toggle-btn" onclick="toggleSidebar()">&#9776;</button>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <img src="image/logo.webp" alt="Logo">
+        </div>
+        <nav class="nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="add-expense.html">Add Expenses</a></li>
+                <li><a href="budgeting.html">Add Budgeting</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content Area (Settings page content) -->
+    <div class="content-area">
+        <div class="settings-container">
+            <h2>Account Settings</h2>
+            <div class="settings-list">
+                <div class="settings-item">
+                    <button class="settings-btn">Change Username</button>
+                </div>
+                <div class="settings-item">
+                    <button class="settings-btn">Change Password</button>
+                </div>
+                <div class="settings-item">
+                    <button class="settings-btn">Change Email</button>
+                </div>
+                <div class="settings-item">
+                    <button class="settings-btn">Notification Settings</button>
+                </div>
+                <div class="settings-item">
+                    <button class="settings-btn">Privacy Settings</button>
+                </div>
+                <div class="settings-item">
+                    <button class="settings-btn">Deactivate Account</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Expenses Tracker</p>
+    </footer>
+
+    <script>
+        // Toggle Sidebar Function
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            const currentLeft = getComputedStyle(sidebar).left;
+
+            if (currentLeft === "0px") {
+                sidebar.style.left = "-250px";  // Hide sidebar
+            } else {
+                sidebar.style.left = "0";  // Show sidebar
+            }
+        }
+    </script>
+
+</body>
+</html>

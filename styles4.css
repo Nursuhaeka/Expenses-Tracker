@@ -1,0 +1,142 @@
+/*signup_css*/
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+}
+
+/* Header Styles */
+.header {
+    display: flex;
+    justify-content: center; /* Center the contents of the header */
+    align-items: center;
+    background-color: #6a4c9c;
+    padding: 10px 20px;
+    position: fixed; /* Fix the header at the top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.logo {
+    display: flex;
+    justify-content: center; /* Center the logo */
+    align-items: center;
+    flex-grow: 1; /* Make the logo take up available space */
+}
+
+.logo img {
+    max-width: 70px; /* Ensure logo doesn't exceed this width */
+}
+
+/* Navigation Styles (if any) */
+.nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.nav ul li {
+    margin-left: 20px;
+}
+
+.nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.nav ul li a:hover {
+    background-color: #9c7ed9;
+}
+
+/* Main Content */
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 100px); /* Take up remaining height after header */
+    padding: 20px;
+    margin-top: 100px; /* Add margin-top to move the form down */
+}
+
+.form-container {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+h1 {
+    margin-bottom: 30px;
+    font-size: 24px;
+    text-align: center;
+    color: #6a4c9c;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #6a4c9c;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #9c7ed9;
+}
+
+p {
+    text-align: center;
+    margin-top: 20px;
+}
+
+a {
+    color: #6a4c9c;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+.footer {
+    background-color: #6a4c9c;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}

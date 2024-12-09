@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index Page</title>
+    <link rel="stylesheet" href="styles3.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                
+                <li><a href="settings.html">Settings</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <!-- Sidebar Button (always visible) -->
+    <button class="sidebar-toggle-btn" id="sidebar-toggle-btn">&#9776;</button>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <img src="image/logo.webp" alt="Logo">
+        </div>
+        <div class="nav-links">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="add-expense.html">Add Expenses</a></li>
+                <li><a href="budgeting.html">Add Budgeting</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="image-container">
+            <!-- Image Slider -->
+            <div class="slider">
+                <img src="image1.jpg" alt="Image 1" class="slide">
+                <img src="image2.jpg" alt="Image 2" class="slide">
+                <img src="image3.jpg" alt="Image 3" class="slide">
+            </div>
+            <!-- Slider Navigation -->
+            <button class="prev" id="prev">&#10094;</button>
+            <button class="next" id="next">&#10095;</button>
+        </div>
+
+        <!-- Buttons -->
+        <div class="buttons">
+            <a href="add-expense.html">
+                <button>Add Expenses</button>
+            </a>
+            <a href="budgeting.html">
+                <button>Add Budgeting</button>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Expenses Tracker</p>
+    </footer>
+
+    <!-- JavaScript for sidebar toggle -->
+    <script>
+        const sidebarToggle = document.getElementById("sidebar-toggle-btn");  // Sidebar button
+        const sidebar = document.getElementById("sidebar"); // Sidebar element
+        const mainContent = document.querySelector(".main-content"); // Main content area
+
+        // Function to toggle the sidebar open/closed
+        sidebarToggle.addEventListener("click", function() {
+            sidebar.classList.toggle("open"); // Toggle the 'open' class to slide the sidebar in/out
+            mainContent.classList.toggle("sidebar-open"); // Toggle the margin adjustment for main content
+        });
+    </script>
+
+    <!-- JavaScript for image slider -->
+    <script>
+        let currentIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        // Show the next slide
+        function showNext() {
+            // Move the slider to the next slide using transform
+            currentIndex = (currentIndex + 1) % totalSlides; // Move to next slide, loop back to start if at the end
+            updateSliderPosition();
+        }
+
+        // Show the previous slide
+        function showPrev() {
+            // Move the slider to the previous slide using transform
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides; // Move to previous slide, loop to end if at start
+            updateSliderPosition();
+        }
+
+        // Update the slider position using translateX
+        function updateSliderPosition() {
+            const slider = document.querySelector('.slider');
+            const slideWidth = slides[0].offsetWidth; // Get the width of the first slide
+            const newPosition = -currentIndex * slideWidth; // Calculate the new position
+
+            // Apply the transform to move the slider
+            slider.style.transform = `translateX(${newPosition}px)`;
+        }
+
+        // Initial setup: Show only the first slide
+        updateSliderPosition();
+
+        // Auto-slide function (every 3 seconds)
+        setInterval(showNext, 3000);
+
+        // Add event listeners to navigation buttons
+        document.getElementById('next').addEventListener('click', showNext);
+        document.getElementById('prev').addEventListener('click', showPrev);
+    </script>
+
+</body>
+</html>
